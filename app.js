@@ -43,18 +43,18 @@ function userFlash(btn){
 
 function checkAns(idx){
     if(userSeq[idx]===gameSeq[idx]){
-        if(userSeq.length==gameSeq.length){
+        if(userSeq.length===gameSeq.length){
             setTimeout(levelUp(),1000);
         }
-        console.log("Same value");
+        // console.log("Same value");
     }else{
         let body=document.querySelector("body");
         body.classList.add("gameOver");
-        h2.innerText="Game Over!Press any key to Start";
+        h2.innerHTML=`Game Over! Your score was ${level}<br>Press any key to Start`;
         setTimeout(function(){
             body.classList.remove("gameOver");
         },400);
-        reset();
+        reset(); 
     }
 }
 
@@ -63,9 +63,9 @@ function btnPress(){
     let btn=this;
    userFlash(btn);
    let userColor=btn.getAttribute("id");
-   console.log(userColor);
+//    console.log(userColor);
    userSeq.push(userColor);
-   console.log(userSeq);
+//    console.log(userSeq);
    checkAns(userSeq.length-1);
 }
 
@@ -76,8 +76,9 @@ for(btn of allBtns){
 
 
 function reset(){
-    level=0;
-    gameSequence=[];
-    userSequence=[];
     started=false;
+    level=0;
+    gameSeq=[];
+    userSequence=[];
+    
 }
